@@ -20,7 +20,7 @@ body {
   font-family: Inter Tight;
 }
 .display-1 {
-  font-family: 'Inter Tight', sans-serif;
+  font-family: 'Playfair Display', serif;
   font-size: 5rem;
   line-height: 1;
 }
@@ -1353,44 +1353,12 @@ a {
   background: #232323;
 }
 .cid-tJS6uM4N87 .mbr-section-title {
-  color: #ffffff;
+  color: #edefeb;
+  text-align: center;
 }
 .cid-tJS6uM4N87 .mbr-text,
 .cid-tJS6uM4N87 .mbr-section-btn {
   color: #ffffff;
-}
-.cid-tLek7gQhG7 {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
-  background-color: #f7f7f7;
-}
-.cid-tLek7gQhG7 .mbr-fallback-image.disabled {
-  display: none;
-}
-.cid-tLek7gQhG7 .mbr-fallback-image {
-  display: block;
-  background-size: cover;
-  background-position: center center;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-}
-.cid-tLek7gQhG7 .item-wrapper {
-  display: flex;
-  margin-bottom: 2rem;
-}
-@media (max-width: 767px) {
-  .cid-tLek7gQhG7 .item-wrapper {
-    margin-bottom: 1rem;
-  }
-}
-.cid-tLek7gQhG7 .img-wrapper {
-  width: 10rem;
-  padding-right: 2rem;
-}
-.cid-tLek7gQhG7 .card-text {
-  color: #232323;
 }
 .cid-ui5dlUU7GR {
   padding-top: 6rem;
