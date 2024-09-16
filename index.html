@@ -14,16 +14,11 @@
       background-color: black;
     }
 
-    #s0ski {
+    #text {
       font-size: 5rem;
       font-family: 'Courier New', Courier, monospace;
       color: white;
-      display: none;
       white-space: nowrap;
-    }
-
-    .typewriter {
-      animation: typewriter 3s steps(5) forwards, blink 0.75s step-end infinite;
       border-right: 2px solid white;
       overflow: hidden;
       display: inline-block;
@@ -46,16 +41,87 @@
         border-color: white;
       }
     }
+
+    .cursor {
+      animation: blink 0.75s step-end infinite;
+    }
   </style>
 </head>
 <body>
 
-  <div id="s0ski" class="typewriter">s0ski</div>
+  <div id="text" class="cursor"></div>
 
   <script>
-    setTimeout(function() {
-      document.getElementById("s0ski").style.display = "inline-block";
-    }, 500);
+    const textElement = document.getElementById('text');
+    
+    const sequences = [
+      "s0ski",        // Initial "s0ski"
+      "s0ski...",     // "s0ski" with dots after 1-2s
+      "s3ski",        // Change to "s3ski"
+      "s4ski",        // Change to "s4ski"
+      "s5ski",        // Change to "s5ski"
+      "s6ski",        // Change to "s6ski"
+      "s0ski"         // Finally back to "s0ski"
+    ];
+
+    let stepIndex = 0;
+    
+    function typeText(text, callback) {
+      let i = 0;
+      textElement.textContent = '';  // Start by clearing the text
+
+      const typingInterval = setInterval(function() {
+        textElement.textContent = text.slice(0, i + 1);  // Simulate typing character by character
+        i++;
+
+        if (i === text.length) {  // When typing is finished
+          clearInterval(typingInterval);
+          setTimeout(callback, 1000);  // Wait 1 second before calling the callback
+        }
+      }, 300);  // Typing speed (300ms per character)
+    }
+
+    function eraseText(callback) {
+      let currentText = textElement.textContent;
+      let i = currentText.length;
+
+      const erasingInterval = setInterval(function() {
+        textElement.textContent = currentText.slice(0, i - 1);  // Erase one character at a time
+        i--;
+
+        if (i === 1) {  // Stop erasing when we reach the first "s"
+          clearInterval(erasingInterval);
+          setTimeout(callback, 1000);  // Wait 1 second before calling the callback
+        }
+      }, 200);  // Erasing speed (200ms per character)
+    }
+
+    function typeSequence() {
+      if (stepIndex < sequences.length) {
+        const currentText = sequences[stepIndex];
+        
+        if (stepIndex === 1) {  // After "s0ski...", erase to the first "s"
+          typeText(currentText, function() {
+            setTimeout(function() {
+              eraseText(function() {
+                stepIndex++;
+                typeSequence();
+              });
+            }, 1000);  // Delay before erasing
+          });
+        } else {
+          typeText(currentText, function() {
+            stepIndex++;
+            typeSequence();
+          });
+        }
+      } else {
+        stepIndex = 0;  // Loop back to the start
+        setTimeout(typeSequence, 1000);  // Wait 1 second before starting over
+      }
+    }
+
+    setTimeout(typeSequence, 500);  // Start after 0.5 seconds
   </script>
   
 </body>
