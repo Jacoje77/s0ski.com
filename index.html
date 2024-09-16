@@ -11,24 +11,25 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: white;
+      background-color: black;
     }
 
     #s0ski {
       font-size: 5rem;
-      font-family: 'Comic Sans MS', cursive, sans-serif;
+      font-family: 'Courier New', Courier, monospace;
+      color: white;
       display: none;
       white-space: nowrap;
     }
 
-    .handwritten {
-      animation: handwriting 1s steps(12) forwards;
-      border-right: 2px solid;
+    .typewriter {
+      animation: typewriter 3s steps(5) forwards, blink 0.75s step-end infinite;
+      border-right: 2px solid white;
       overflow: hidden;
       display: inline-block;
     }
 
-    @keyframes handwriting {
+    @keyframes typewriter {
       from {
         width: 0;
       }
@@ -36,11 +37,20 @@
         width: 100%;
       }
     }
+
+    @keyframes blink {
+      from, to {
+        border-color: transparent;
+      }
+      50% {
+        border-color: white;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <div id="s0ski" class="handwritten">s0ski</div>
+  <div id="s0ski" class="typewriter">s0ski</div>
 
   <script>
     setTimeout(function() {
