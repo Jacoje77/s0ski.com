@@ -28,38 +28,66 @@
     }
 
     #contact {
-      margin-top: 50px;
-      text-align: center;
+      position: fixed; /* Fixed position for scrolling effect */
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 50vh; /* Takes half of the viewport height */
+      background-color: white;
+      color: black;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       opacity: 0; /* Initially hidden */
-      transition: opacity 1s ease-in-out; /* Smooth transition for showing */
+      transition: opacity 1s ease-in-out, transform 1s ease-in-out; /* Smooth transition for showing */
+      transform: translateY(100%); /* Start from below the viewport */
     }
 
     #contact.show {
       opacity: 1; /* Show contact section */
+      transform: translateY(0); /* Move into view */
     }
 
     #contact h2 {
-      font-size: 3rem;
+      font-size: 2.5rem;
+      margin: 0;
     }
 
     #contact p {
-      font-size: 1.5rem;
+      font-size: 1.25rem;
+      margin: 0;
+    }
+
+    #contact a {
+      color: black;
+      text-decoration: underline;
     }
 
     /* Smooth scroll to contact section */
     html {
       scroll-behavior: smooth;
     }
+
+    .content {
+      flex: 1;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   </style>
 </head>
 <body>
 
-  <div id="text" class="cursor"></div>
+  <div class="content">
+    <div id="text" class="cursor"></div>
+  </div>
 
   <div id="contact">
     <h2>Contact Us</h2>
     <p>If you have any questions or just want to say hi, please reach out to us at:</p>
-    <p><a href="mailto:s4ski@s0ski.com" style="color: white; text-decoration: underline;">s4ski@s0ski.com</a></p>
+    <p><a href="mailto:s4ski@s0ski.com">s4ski@s0ski.com</a></p>
   </div>
 
   <script>
@@ -119,7 +147,7 @@
               textElement.textContent = "s0ski";  // Show final "s0ski"
               setTimeout(function() {
                 contactSection.classList.add('show');  // Show contact section
-                contactSection.scrollIntoView({ behavior: 'smooth' });  // Scroll to contact section
+                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });  // Scroll to bottom
               }, 1000);  // Wait a bit before showing contact section
               return;
             }
