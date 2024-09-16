@@ -16,44 +16,26 @@
     }
 
     #text {
-      font-size: 6rem; /* Adjusted for a modern, cubic look */
+      font-size: 6rem; /* Modern, cubic look */
       font-family: 'Roboto Mono', monospace; /* Modern, geometric font */
       color: white;
       white-space: nowrap;
       border-right: 3px solid white; /* Sleek, modern cursor */
       overflow: hidden;
       display: inline-block;
-      letter-spacing: 0.1em; /* Added spacing for a cubic effect */
-      text-transform: uppercase; /* Uppercase for a clean look */
-    }
-
-    /* Modern typing animation */
-    @keyframes typewriter {
-      from {
-        width: 0;
-      }
-      to {
-        width: 100%;
-      }
-    }
-
-    /* Smoother cursor blink */
-    @keyframes blink {
-      from, to {
-        border-color: transparent;
-      }
-      50% {
-        border-color: white;
-      }
-    }
-
-    .cursor {
-      animation: blink 0.6s step-end infinite; /* Smooth cursor blink */
+      letter-spacing: 0.1em; /* Cubic effect */
+      text-transform: uppercase; /* Clean look */
     }
 
     #contact {
       margin-top: 50px;
       text-align: center;
+      opacity: 0; /* Initially hidden */
+      transition: opacity 1s ease-in-out; /* Smooth transition for showing */
+    }
+
+    #contact.show {
+      opacity: 1; /* Show contact section */
     }
 
     #contact h2 {
@@ -134,10 +116,11 @@
           eraseText(function() {
             stepIndex++;
             if (stepIndex >= sequences.length) {
-              stepIndex = 0;  // Loop back to the start
+              textElement.textContent = "s0ski";  // Show final "s0ski"
               setTimeout(function() {
-                document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });  // Scroll to contact section
-              }, 1000);  // Wait a bit before scrolling
+                contactSection.classList.add('show');  // Show contact section
+                contactSection.scrollIntoView({ behavior: 'smooth' });  // Scroll to contact section
+              }, 1000);  // Wait a bit before showing contact section
               return;
             }
             setTimeout(typeSequence, 500);  // Wait 0.5 seconds before starting the next text
