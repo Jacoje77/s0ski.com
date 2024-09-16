@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>s0ski Bot - Home</title>
-  
+
   <!-- Fonts & Styles -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
@@ -16,31 +16,37 @@
     body {
       font-family: 'Roboto', sans-serif;
       color: #E5E5E5;
-      background-color: #1E1E2C; /* Background color cold and dark */
+      background-color: #1B1C2A; /* Darker cold blue for depth */
       margin: 0;
       padding: 0;
+      line-height: 1.6;
     }
 
     .navbar, .btn-primary {
-      background-color: #2B2D42; /* Deep cold blue-gray */
+      background-color: #2D3142; /* Deep cold blue-gray */
       border: none;
     }
 
     .btn-primary, .btn-secondary {
       border-radius: 30px;
-      transition: background-color 0.3s ease;
+      padding: 10px 30px;
+      font-size: 1.1rem;
+      transition: background-color 0.3s ease, transform 0.3s ease;
     }
 
     .btn-primary:hover {
       background-color: #4A5568;
+      transform: translateY(-3px);
     }
 
     .btn-secondary {
       background-color: #A9B0B5;
+      color: #2D3142;
     }
 
     .btn-secondary:hover {
       background-color: #6B7280;
+      transform: translateY(-3px);
     }
 
     h1, h4, h3 {
@@ -53,8 +59,8 @@
     }
 
     .mbr-overlay {
-      opacity: 0.9;
-      background-color: #1E1E2C;
+      opacity: 0.95;
+      background: linear-gradient(135deg, #1B1C2A 30%, #2D3142 100%);
     }
 
     .mbr-section-btn a {
@@ -73,11 +79,10 @@
     .iconfont {
       font-size: 3rem;
       color: #379683; /* Cold green */
-      fill: #379683;
     }
 
     .container, .media-container {
-      padding: 60px 0;
+      padding: 80px 0;
     }
 
     .navbar-brand span {
@@ -86,12 +91,43 @@
     }
 
     .header-content {
-      padding: 80px 0;
+      padding: 100px 0;
+      background-image: url('assets/images/header-background.jpg'); /* Add a cold, professional background */
+      background-size: cover;
+      background-position: center;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     }
 
     .contacts {
-      padding: 60px 0;
-      background-color: #2B2D42;
+      padding: 80px 0;
+      background-color: #2D3142;
+    }
+
+    .features .card {
+      background-color: #3E4C59;
+      border: none;
+      padding: 30px;
+      margin: 20px 0;
+      transition: transform 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .features .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .about img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Media Queries */
+    @media (max-width: 768px) {
+      .features .card {
+        margin-bottom: 30px;
+      }
     }
   </style>
 </head>
@@ -126,8 +162,8 @@
   <section id="header" class="header-content">
     <div class="mbr-overlay"></div>
     <div class="container text-center">
-      <h1 class="display-1"><strong>Bienvenue dans l'univers de l'optimisation.</strong></h1>
-      <p class="lead">Explorez des solutions de gestion de serveurs avec précision et sophistication. Un système conçu pour l'efficacité et la performance.</p>
+      <h1 class="display-1"><strong>Optimisation à un nouveau niveau.</strong></h1>
+      <p class="lead">Découvrez des solutions élégantes pour gérer vos serveurs avec précision. Pensé pour la performance, conçu pour l'efficacité.</p>
       <div class="mbr-section-btn">
         <a class="btn btn-primary" href="#get-started">Commencer</a>
         <a class="btn btn-secondary" href="#about">En savoir plus</a>
@@ -176,44 +212,35 @@
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-6">
-          <h3 class="display-3"><strong>À propos de notre Agence</strong></h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Explorez des solutions d'optimisation pour vos serveurs. Nous nous concentrons sur l'efficacité et la performance, afin de vous fournir une gestion fluide et automatisée.</p>
-          <a class="btn btn-secondary" href="#get-started">Lire plus</a>
+          <h3 class="display-3"><strong>À propos de nous</strong></h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nous nous concentrons sur la fourniture de solutions robustes et fiables pour l'optimisation de la gestion des serveurs. Avec une équipe d'experts, nous mettons en œuvre des stratégies de haute technologie pour atteindre vos objectifs.</p>
         </div>
-        <div class="col-lg-6 text-center">
-          <img src="assets/images/mbr.jpeg" alt="About Image" class="img-fluid">
+        <div class="col-lg-6">
+          <img src="assets/images/about-image.jpg" alt="About us">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Contacts Section -->
+  <!-- Contact Section -->
   <section id="contacts" class="contacts mt-5">
     <div class="container text-center">
-      <h3 class="display-3"><strong>Contacts</strong></h3>
-      <p class="lead">Nous sommes là pour vous aider. Contactez-nous à tout moment.</p>
+      <h3>Contactez-nous</h3>
+      <p>Nous sommes là pour répondre à toutes vos questions.</p>
       <div class="row">
-        <div class="col-md-6">
-          <div class="card">
-            <span class="iconfont icon-mbr-letter"></span>
-            <h4>Email</h4>
-            <p>Envoyez-nous un email et nous répondrons rapidement.</p>
-            <a href="mailto:info@site.com" class="text-primary">info@site.com</a>
-          </div>
+        <div class="col-md-4">
+          <p><i class="fas fa-phone"></i> +33 6 12 34 56 78</p>
         </div>
-        <div class="col-md-6">
-          <div class="card">
-            <span class="iconfont icon-mbr-mobile-2"></span>
-            <h4>Téléphone</h4>
-            <p>Disponible du lundi au vendredi, de 09h00 à 18h00.</p>
-            <a href="tel:+12345678910" class="text-primary">(800) 123 45 67</a>
-          </div>
+        <div class="col-md-4">
+          <p><i class="fas fa-envelope"></i> contact@s0ski.com</p>
+        </div>
+        <div class="col-md-4">
+          <p><i class="fas fa-map-marker-alt"></i> Paris, France</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Scripts -->
   <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
