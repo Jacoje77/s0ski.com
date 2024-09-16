@@ -15,15 +15,16 @@
     }
 
     #text {
-      font-size: 5rem;
-      font-family: 'Courier New', Courier, monospace;
+      font-size: 7rem;
+      font-family: 'Montserrat', sans-serif; /* Modern, sleek font */
       color: white;
       white-space: nowrap;
-      border-right: 2px solid white;
+      border-right: 4px solid white; /* Thicker and more modern cursor */
       overflow: hidden;
       display: inline-block;
     }
 
+    /* Modern typing animation */
     @keyframes typewriter {
       from {
         width: 0;
@@ -33,6 +34,7 @@
       }
     }
 
+    /* Smoother cursor blink */
     @keyframes blink {
       from, to {
         border-color: transparent;
@@ -43,7 +45,7 @@
     }
 
     .cursor {
-      animation: blink 0.75s step-end infinite;
+      animation: blink 0.5s step-end infinite; /* Faster blink, sleeker look */
     }
   </style>
 </head>
@@ -55,11 +57,12 @@
     const textElement = document.getElementById('text');
     
     const sequences = [
-      "s0ski.",        // Initial "s0ski"
-      "s3ski",        // Change to "s3ski"
-      "s4ski",        // Change to "s4ski"
-      "s5ski",        // Change to "s5ski"
-      "s6ski",        // Change to "s6ski"
+      "s0ski.",     // "s0ski" with dots after 1-2s
+      "s3ski.",        // Change to "s3ski"
+      "s4ski.",        // Change to "s4ski"
+      "s5ski.",        // Change to "s5ski"
+      "s6ski.",        // Change to "s6ski"
+      "s0ski."         // Finally back to "s0ski"
     ];
 
     let stepIndex = 0;
@@ -76,7 +79,7 @@
           clearInterval(typingInterval);
           setTimeout(callback, 1000);  // Wait 1 second before calling the callback
         }
-      }, 300);  // Typing speed (300ms per character)
+      }, 200);  // Typing speed (200ms per character)
     }
 
     function eraseText(callback) {
@@ -91,7 +94,7 @@
           clearInterval(erasingInterval);
           setTimeout(callback, 1000);  // Wait 1 second before calling the callback
         }
-      }, 200);  // Erasing speed (200ms per character)
+      }, 100);  // Erasing speed (100ms per character, faster)
     }
 
     function typeSequence() {
