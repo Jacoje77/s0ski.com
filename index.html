@@ -15,13 +15,15 @@
     }
 
     #text {
-      font-size: 7rem;
-      font-family: 'Montserrat', sans-serif; /* Modern, sleek font */
+      font-size: 6rem; /* Adjusted for a modern, cubic look */
+      font-family: 'Roboto Mono', monospace; /* Modern, geometric font */
       color: white;
       white-space: nowrap;
-      border-right: 4px solid white; /* Thicker and more modern cursor */
+      border-right: 3px solid white; /* Sleek, modern cursor */
       overflow: hidden;
       display: inline-block;
+      letter-spacing: 0.1em; /* Added spacing for a cubic effect */
+      text-transform: uppercase; /* Uppercase for a clean look */
     }
 
     /* Modern typing animation */
@@ -45,7 +47,7 @@
     }
 
     .cursor {
-      animation: blink 0.5s step-end infinite; /* Faster blink, sleeker look */
+      animation: blink 0.6s step-end infinite; /* Smooth cursor blink */
     }
   </style>
 </head>
@@ -57,12 +59,13 @@
     const textElement = document.getElementById('text');
     
     const sequences = [
-      "s0ski.",     // "s0ski" with dots after 1-2s
-      "s3ski.",        // Change to "s3ski"
-      "s4ski.",        // Change to "s4ski"
-      "s5ski.",        // Change to "s5ski"
-      "s6ski.",        // Change to "s6ski"
-      "s0ski."         // Finally back to "s0ski"
+      "s0ski",        // Initial text
+      "s0ski...",     // Text with dots after 1-2s
+      "s3ski",        // Change to "s3ski"
+      "s4ski",        // Change to "s4ski"
+      "s5ski",        // Change to "s5ski"
+      "s6ski",        // Change to "s6ski"
+      "s0ski"         // Finally back to "s0ski"
     ];
 
     let stepIndex = 0;
@@ -79,7 +82,7 @@
           clearInterval(typingInterval);
           setTimeout(callback, 1000);  // Wait 1 second before calling the callback
         }
-      }, 200);  // Typing speed (200ms per character)
+      }, 150);  // Typing speed (150ms per character for a modern look)
     }
 
     function eraseText(callback) {
@@ -90,35 +93,26 @@
         textElement.textContent = currentText.slice(0, i - 1);  // Erase one character at a time
         i--;
 
-        if (i === 1) {  // Stop erasing when we reach the first "s"
+        if (i === 0) {  // Stop erasing when we reach the beginning
           clearInterval(erasingInterval);
           setTimeout(callback, 1000);  // Wait 1 second before calling the callback
         }
-      }, 100);  // Erasing speed (100ms per character, faster)
+      }, 100);  // Erasing speed (100ms per character)
     }
 
     function typeSequence() {
       if (stepIndex < sequences.length) {
         const currentText = sequences[stepIndex];
         
-        if (stepIndex === 1) {  // After "s0ski...", erase to the first "s"
-          typeText(currentText, function() {
-            setTimeout(function() {
-              eraseText(function() {
-                stepIndex++;
-                typeSequence();
-              });
-            }, 1000);  // Delay before erasing
-          });
-        } else {
-          typeText(currentText, function() {
+        typeText(currentText, function() {
+          eraseText(function() {
             stepIndex++;
-            typeSequence();
+            if (stepIndex >= sequences.length) {
+              stepIndex = 0;  // Loop back to the start
+            }
+            setTimeout(typeSequence, 500);  // Wait 0.5 seconds before starting the next text
           });
-        }
-      } else {
-        stepIndex = 0;  // Loop back to the start
-        setTimeout(typeSequence, 1000);  // Wait 1 second before starting over
+        });
       }
     }
 
